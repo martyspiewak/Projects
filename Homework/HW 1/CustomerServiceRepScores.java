@@ -120,7 +120,12 @@ public class CustomerServiceRepScores
         for(int i = 0; i < scores[repID].length - 1; i++) {
             cumScoreWithAvg[i] = scores[repID][i];
         }
-        cumScoreWithAvg[cumScoreWithAvg.length - 1] = averages[repID];
+        if(counter[repID][1] == 1) {
+            cumScoreWithAvg[cumScoreWithAvg.length - 1] = averages[repID];
+        }
+        else {
+            cumScoreWithAvg[cumScoreWithAvg.length - 1] = -1.0;
+        }
         return cumScoreWithAvg;
     }
 
