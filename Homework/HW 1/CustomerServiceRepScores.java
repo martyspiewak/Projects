@@ -8,7 +8,7 @@ public class CustomerServiceRepScores
     private int[][] counter;
     private double[] averages;
 
-
+    
     public void CustomerServiceRepScores(int repQuantity, int scoreQuantity)
     {
         this.repQuantity = repQuantity;
