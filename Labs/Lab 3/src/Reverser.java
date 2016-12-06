@@ -7,6 +7,9 @@ public class Reverser {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
+		System.out.println("First enter the amount of numbers you would like to flip at a time. ");
+		System.out.println("Then enter your list. ");
+		System.out.println("Once you have finished your list, press any letter to finish.");
 		int num = 0;
 		while (sc.hasNextInt()) {
 			if (num == 0) {
@@ -16,8 +19,6 @@ public class Reverser {
 			makeNode(i);
 		}
 		sc.close();
-		printList();
-		list.setHead(reverse());
 		printList();
 		list.setHead(reverseWithLimit(num));
 		printList();
@@ -42,6 +43,7 @@ public class Reverser {
 		System.out.println(list.toString());
 	}
 	
+	@SuppressWarnings("unused")
 	private static Node reverse() {
 		return reverse(list.getHead());
 	}
