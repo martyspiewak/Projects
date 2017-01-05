@@ -130,7 +130,7 @@ public class SelectHandler {
 				else {
 					col = colName;
 				}
-				if(!tbl.getColumnTypes().containsKey(col)) {
+				if(!tbl.getColumnTypes().containsKey(col) && !tbl.getList().get(0).getContent().containsKey(col)) {
 					System.out.println("This column doesn't exist.");
 					ResultGenerator r = new ResultGenerator();
 					return r.generate(false);
