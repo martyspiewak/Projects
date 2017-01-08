@@ -38,6 +38,8 @@ public class SelectHandler {
 		else if(tables.length == 1) {
 			result = selectWithoutWhereOrFunc(q, tables[0], columns);
 		}
+		//JD: it would make sense to break out from here to line 69 as a separate method - it's a bunch of lines that do one
+		//coherent unit of work, and this method is long right now
 		HashMap<String, Object> values = new HashMap<String, Object>();
 		boolean hasFunc = false;
 		for(ColumnID column : q.getFunctionMap().keySet()) {
@@ -95,7 +97,7 @@ public class SelectHandler {
 		}
 		return result;
 	}
-	
+	//JD: same comment - break it down into smaller methods - better for comprehension and for maintenance 
 	private Table selectWithoutWhereOrFunc(SelectQuery q, Table table, ColumnID[] columns) {
 		Table result = new Table("Result");
 		HashMap<String, ArrayList<Object>> rowInfo = new HashMap<String, ArrayList<Object>>();
@@ -375,6 +377,7 @@ public class SelectHandler {
 			OrderBy order = this.orders[num];
 			String colName = order.getColumnID().getColumnName();
 			boolean ascending = order.isAscending();
+			//JD: same comment - make ascending and descending separate methods
 			if(ascending) {
 				ArrayList<String> test1 = new ArrayList<String>(row1.getContent().keySet());
 				ArrayList<String> test2 = new ArrayList<String>(row2.getContent().keySet());

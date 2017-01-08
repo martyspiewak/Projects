@@ -144,6 +144,7 @@ public class Query {
 	}
 	
 	public static Table execute(String sql) throws JSQLParserException {
+		System.out.println("\nQuery to execute: " + sql + "\n");
 		if(!haveSerialized) {
 			test();
 		}
@@ -219,12 +220,15 @@ public class Query {
 				tbl.getDefau().put(name, null);
 			}
 		}
-		tbl.addBTree(prime);
+		tbl.addBTree(prime); //JD: out of curiosity - why put this line here instead of right after line 198?
 		database.addTable(q.getTableName(), tbl);
 		System.out.println(tbl);
 		return tbl;
 	}
 
+	//JD: ideally you would want to, at a minimum, break this method down into smaller methods, and have one driver method that calls all the others
+	//you might want to also consider making an entirely separate class (InsertQueryRunner, or something) - this is a lot of logic and should
+	//be put into its own class to make understanding and maintaining it easier.
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private static Table insertRow(InsertQuery q) {
 		ResultGenerator result = new ResultGenerator();

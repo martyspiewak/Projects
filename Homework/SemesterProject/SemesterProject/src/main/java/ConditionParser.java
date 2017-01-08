@@ -6,6 +6,8 @@ import edu.yu.cs.dataStructures.fall2016.SimpleSQLParser.ColumnDescription.DataT
 import edu.yu.cs.dataStructures.fall2016.SimpleSQLParser.ColumnID;
 import edu.yu.cs.dataStructures.fall2016.SimpleSQLParser.Condition;
 
+//JD: lots of oversized methods in this class that should be broken down into smaller ones.
+//while you're breaking them down you can see if there is any common code across different parts of your logic that can be parameterized and reused
 public class ConditionParser {
 	
 	protected ConditionParser() {

@@ -12,7 +12,8 @@ import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 
 public class Serializer {
-	
+	//JD: better not to hard-code paths like this. Would be better to take a directory from which to load/save files as a command line argument 
+	//same comment applies to all the paths in this class
 	private static String log = "src/Logging/QueryLog.txt";
 	
 	protected Serializer() {
@@ -30,12 +31,16 @@ public class Serializer {
 			bw.close();
 		}
 		catch(IOException ioe)
-		{
+		{			
+			//JD: exceptions have messages, and it is a good idea to share them with your user, Like this:
+		    //System.err.println("IOException: Logging did not work. Exception Message: " + ioe.getMessage());
+			//that way whoever has to support your software will have some clue what went wrong
 		    System.err.println("IOException: Logging did not work.");
 		}
 		
 	}
-	
+	//JD: for both this method and deserialize, it would be good to break them each down into 2 separate methods, one for database.ser and one for 
+	//DatabaseTimeStamp.txt. Smaller methods are easier to understand and maintain.
 	protected void serialize(Database d) {
 		//re-save the old backup
 		Database old = null;

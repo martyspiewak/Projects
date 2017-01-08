@@ -194,6 +194,8 @@ public class Table implements java.io.Serializable{
 		switch(this.columnTypes.get(column)) {
 		case INT:
 			try{
+				//JD: FYI - in each of these you could've just done, for example, obj = Integer.parseInt
+				//i.e., set obj to the result of the parse method directly - no need to create a local variable, e.g. num, that you will never use anyway
 				Integer num = Integer.parseInt(val);
 				obj = num;
 			} catch (Exception e) {
